@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Money Calculator</string>
+
+    <string-array name="services_array">
+        <item>M-Pesa</item>
+        <item>Airtel Money</item>
+        <item>Eazzy Pay</item>
+    </string-array>
+
+    <string-array name="mpesa_transactions">
+        <item>Transfer to Registered User</item>
+        <item>Withdraw from M-PESA Agent</item>
+        <item>ATM Withdrawal</item>
+        <item>Transfer to Unregistered User</item>
+    </string-array>
+
+    <string-array name="airtel_transactions">
+        <item>Transfer to Registered User</item>
+        <item>Transfer to Unregistered User</item>
+        <item>Agent Withdrawal</item>
+        <item>Chase Bank ATM Withdrawal(VISA)</item>
+        <item>Kenswitch ATM Withdrawal(VISA)</item>
+        <item>Visa Local ATM Withdrawal(VISA)</item>
+        <item>Visa International ATM Withdrawal(VISA)</item>
+    </string-array>
+
+    <string-array name="eazzy_transactions">
+        <item>Send to Equity Account</item>
+        <item>Send to Airtel Money/ M-PESA</item>
+        <item>Send to other Bank Account(PESA-LINK)</item>
+        <item>Send to other Bank Account(RTGS)</item>
+        <item>Bill Payments</item>
+        <item>Cash Requests</item>
+    </string-array>
+</resources>
