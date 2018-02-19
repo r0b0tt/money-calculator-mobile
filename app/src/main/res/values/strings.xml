@@ -26,10 +26,10 @@
 
     <string-array name="eazzy_transactions">
         <item>Send to Equity Account</item>
+        <item>Agent Withdrawal</item>
         <item>Send to Airtel Money/ M-PESA</item>
         <item>Send to other Bank Account(PESA-LINK)</item>
         <item>Send to other Bank Account(RTGS)</item>
         <item>Bill Payments</item>
-        <item>Cash Requests</item>
     </string-array>
 </resources>
