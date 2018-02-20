@@ -72,7 +72,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Transaction Fee:"/>
+            android:text="Transaction Fee(KShs):"/>
         <EditText
             android:id="@+id/et_fee"
             android:layout_width="0dp"
@@ -88,7 +88,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Recommended Balance:"/>
+            android:text="Recommended Balance(KShs):"/>
         <EditText
             android:id="@+id/et_balance"
             android:layout_width="0dp"

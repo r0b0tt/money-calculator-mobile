@@ -98,66 +98,58 @@ public class Main extends AppCompatActivity {
          * This function gets the rates for various transactions using Eazzy Banking.
          */
         String selected_transaction = sp_transactions.getSelectedItem().toString();
-        Double fee = 0.00, balance = 0.00;
+        Double fee = 0.00;
         KenyaTariffs kenyaTariffs = new KenyaTariffs();
 
         switch (selected_transaction) {
             case "Send to Equity Account":
-                if (!kenyaTariffs.getTransferToEquityAccountMinMax(amount)) {
+                if (!kenyaTariffs.getEazzyBankingTransferToEquityAccountMinMax(amount)) {
                     Toast.makeText(this, "Minimum and Maximum amounts are KShs. 1.00 and KShs. 300,000.00 respectively", Toast.LENGTH_SHORT).show();
                 } else {
-                    fee = kenyaTariffs.getTransferToEquityAccountRates();
-                    balance = amount + fee;
-                    et_fee.setText("KShs. " + fee);
-                    et_balance.setText(("KShs. " + balance));
+                    fee = kenyaTariffs.getEazzyBankingTransferToEquityAccountRates();
                 }
                 break;
 
             case "Agent Withdrawal":
-                if (!kenyaTariffs.getAgentWithdrawalMinMax(amount)) {
+                if (!kenyaTariffs.getEazzyBankingAgentWithdrawalMinMax(amount)) {
                     Toast.makeText(this, "Minimum and Maximum amounts are KShs. 100.00 and KShs. 100,000.00 respectively", Toast.LENGTH_SHORT).show();
                 } else {
-                    fee = kenyaTariffs.getAgentWithdrawalRates(amount);
-                    balance = fee + amount;
+                    fee = kenyaTariffs.getEazzyBankingAgentWithdrawalRates(amount);
                 }
                 break;
             case "Send to Airtel Money/ M-PESA":
-                if (!kenyaTariffs.getTransferToAirtelMpesaMinMax(amount)){
+                if (!kenyaTariffs.getEazzyBankingTransferToAirtelMpesaMinMax(amount)) {
                     Toast.makeText(this, "Minimum and Maximum amounts are KShs. 100.00 and KShs. 35,000.00 respectively", Toast.LENGTH_SHORT).show();
                 } else {
-                    fee = kenyaTariffs.getTransferToAirtelMpesaRates();
-                    balance = amount + fee;
+                    fee = kenyaTariffs.getEazzyBankingTransferToAirtelMpesaRates();
                 }
                 break;
             case "Send to other Bank Account(PESA-LINK)":
-                if (!kenyaTariffs.getTransferToOtherBankAccountPesaLinkMinMax(amount)){
+                if (!kenyaTariffs.getEazzyBankingTransferToOtherBankAccountPesaLinkMinMax(amount)) {
                     Toast.makeText(this, "Minimum and Maximum amounts are KShs. 10.00 and KShs. 999,999.00 respectively", Toast.LENGTH_SHORT).show();
                 } else {
-                    fee = kenyaTariffs.getTransferToOtherBankAccountPesaLinkRates(amount);
-                    balance = amount + fee;
+                    fee = kenyaTariffs.getEazzyBankingTransferToOtherBankAccountPesaLinkRates(amount);
                 }
                 break;
             case "Send to other Bank Account(RTGS)":
-                if (!kenyaTariffs.getTransferToOtherBankAccountRtgsMinMax(amount)){
+                if (!kenyaTariffs.getEazzyBankingTransferToOtherBankAccountRtgsMinMax(amount)) {
                     Toast.makeText(this, "Minimum and Maximum amounts are KShs. 1.00 and KShs. 100,000.00 respectively", Toast.LENGTH_SHORT).show();
                 } else {
-                    fee = kenyaTariffs.getTransferToOtherBankAccountRtgsRates();
-                    balance = amount + fee;
+                    fee = kenyaTariffs.getEazzyBankingTransferToOtherBankAccountRtgsRates();
                 }
                 break;
             case "Bill Payments":
-                fee = kenyaTariffs.getBillPaymentsRates();
-                balance = amount + fee;
+                fee = kenyaTariffs.getEazzyBankingBillPaymentsRates();
                 break;
 
         }
 
-        if (fee == 0.00){
+        if (fee == 0.00) {
             et_fee.setText("N/A");
             et_balance.setText("N/A");
         } else {
-            et_fee.setText("KShs. " + fee);
-            et_balance.setText(("KShs. " + balance));
+            et_fee.setText(String.format("%.2f", fee));
+            et_balance.setText(String.format("%.2f", amount + fee));
         }
 
     }
@@ -166,13 +158,88 @@ public class Main extends AppCompatActivity {
         /**
          * This function gets the rates for the various transactions using Airtel Money.
          */
-        Toast.makeText(this, "Airtel", Toast.LENGTH_SHORT).show();
+        KenyaTariffs kenyaTariffs = new KenyaTariffs();
+        String selected_transaction = sp_transactions.getSelectedItem().toString();
+        Double fee = 0.00;
+
+        if (!kenyaTariffs.getAirtelMoneyMinMax(amount)) {
+            Toast.makeText(this, "Minimum and Maximum transaction amounts are KShs. 50.00 and KShs. 100.00 respectively.", Toast.LENGTH_SHORT).show();
+        } else {
+            switch (selected_transaction) {
+                case "Transfer to Registered User":
+                    fee = kenyaTariffs.getAirtelMoneyTransferRates();
+                    break;
+                case "Transfer to Unregistered User":
+                    fee = kenyaTariffs.getAirtelMoneyTransferRates();
+                    break;
+                case "Agent Withdrawal":
+                    fee = kenyaTariffs.getAirtelMoneyAgentWithdrawalRates(amount);
+                    break;
+                case "Chase Bank ATM Withdrawal(VISA)":
+                    fee = kenyaTariffs.getAirtelMoneyChaseBankATMWithdrawalRates();
+                    break;
+                case "Kenswitch ATM Withdrawal(VISA)":
+                    fee = kenyaTariffs.getAirtelMoneyKenswitchATMWithdrawalRates();
+                    break;
+                case "Visa Local ATM Withdrawal(VISA)":
+                    fee = kenyaTariffs.getAirtelMoneyVisaLocalATMWithdrawalRates();
+                    break;
+                case "Visa International ATM Withdrawal(VISA)":
+                    fee = kenyaTariffs.getAirtelMoneyVisaInternationalATMWithdrawalRates();
+                    break;
+            }
+
+            et_fee.setText(String.format("%.2f", fee));
+            et_balance.setText(String.format("%.2f", amount + fee));
+        }
+
+
     }
 
     private void handleMpesa(Double amount) {
         /**
          * This function gets the rates for the various transactions using M-Pesa.
          */
-        Toast.makeText(this, "Saf", Toast.LENGTH_SHORT).show();
+        KenyaTariffs kenyaTariffs = new KenyaTariffs();
+        String selected_transaction = sp_transactions.getSelectedItem().toString();
+        Double fee = 0.00;
+
+        switch (selected_transaction) {
+            case "Transfer to Registered User":
+                if (!kenyaTariffs.getMpesaTransferToRegisteredUsersMinMax(amount)) {
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 1.00 and 70,000.00 respectively.", Toast.LENGTH_SHORT).show();
+                } else {
+                    fee = kenyaTariffs.getMpesaTransferToRegisteredUsersRates(amount);
+                }
+                break;
+            case "Withdraw from M-PESA Agent":
+                if (!kenyaTariffs.getMpesaAgentWithdrawalMinMax(amount)) {
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 50.00 and KShs. 70,000 respectively.", Toast.LENGTH_SHORT).show();
+                } else {
+                    fee = kenyaTariffs.getMpesaAgentWithdrawalRates(amount);
+                }
+                break;
+            case "ATM Withdrawal":
+                if (!kenyaTariffs.getMpesaATMWithdrawalMinMax(amount)) {
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 200.00 and KShs. 20,000.00 respectively.", Toast.LENGTH_SHORT).show();
+                } else {
+                    fee = kenyaTariffs.getMPesaATMWithdrawalRates(amount);
+                }
+                break;
+            case "Transfer to Unregistered User":
+                if (!kenyaTariffs.getMpesaTransferToUnregisteredUsersMinMax(amount)) {
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 101.00 and KShs. 35,000.00 respectively", Toast.LENGTH_SHORT).show();
+                } else {
+                    fee = kenyaTariffs.getMpesaTransferToUnregisteredUsersRates(amount);
+                }
+                break;
+        }
+
+        if (fee == 0.00) {
+            et_fee.setText("Free");
+        } else {
+            et_fee.setText(String.format("%.2f", fee));
+        }
+        et_balance.setText(String.format("%.2f", amount + fee));
     }
 }
