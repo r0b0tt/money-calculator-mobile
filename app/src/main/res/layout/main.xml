@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical"
     android:padding="16px"
+    android:theme="@style/MoneyCalculator"
     tools:context="com.antoniomaina.moneycalculator.Main">
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
+        app:backgroundTint="#f6f6f6"
         android:id="@+id/et_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#f6f6f6"
+        android:clickable="false"
         android:ems="10"
         android:hint="Enter Amount"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="#f4f4f4"
-        android:textColorHint="#f4f4f4" />
+        android:textColorHint="#f4f4f4"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -33,12 +41,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Service" />
+                android:text="Service"
+                android:textColor="#f6f6f6"
+                android:textSize="16sp" />
 
             <Spinner
                 android:id="@+id/sp_services"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <LinearLayout
@@ -50,12 +60,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transaction" />
+                android:text="Transaction"
+                android:textColor="#f6f6f6"
+                android:textSize="16sp" />
 
             <Spinner
                 android:id="@+id/sp_transactions"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -64,56 +77,74 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
         android:text="Calculate Rates"
+        android:background="@drawable/button"
+        android:elevation="10dp"
+        android:paddingHorizontal="24dp"
+        android:textColor="#f4f4f4"
         android:textAllCaps="false" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Transaction Fee(KShs):" />
+            android:text="Transaction Fee(KShs):"
+            android:textColor="#f6f6f6"
+            android:textSize="16sp" />
 
-        <EditText
+        <android.support.v7.widget.AppCompatEditText
             android:id="@+id/et_fee"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            app:backgroundTint="#f6f6f6" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Recommended Balance(KShs):" />
+            android:text="Recommended Balance(KShs):"
+            android:textColor="#f6f6f6"
+            android:textSize="16sp" />
 
-        <EditText
+        <android.support.v7.widget.AppCompatEditText
             android:id="@+id/et_balance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            app:backgroundTint="#f6f6f6" />
     </LinearLayout>
 
     <!-- adMob View -->
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+    </RelativeLayout>
     <!-- adUnitId: ca-app-pub-5565117060322780/5739621857 -->
 
 </LinearLayout>
