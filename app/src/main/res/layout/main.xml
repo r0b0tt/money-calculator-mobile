@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.antoniomaina.moneycalculator.Main"
-    android:padding="16px"
+    android:background="@drawable/bg"
     android:orientation="vertical"
-    android:background="@drawable/bg">
+    android:padding="16px"
+    tools:context="com.antoniomaina.moneycalculator.Main">
 
     <EditText
         android:id="@+id/et_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
         android:hint="Enter Amount"
+        android:inputType="number"
         android:textAlignment="center"
         android:textColor="#f4f4f4"
-        android:textColorHint="#f4f4f4"
-        />
+        android:textColorHint="#f4f4f4" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Service"/>
+                android:text="Service" />
+
             <Spinner
+                android:id="@+id/sp_services"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/sp_services" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transaction"/>
+                android:text="Transaction" />
+
             <Spinner
+                android:id="@+id/sp_transactions"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/sp_transactions" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 
@@ -60,42 +63,57 @@
         android:id="@+id/btn_calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Calculate Rates"
-        android:textAllCaps="false"
-        android:layout_gravity="center"/>
+        android:textAllCaps="false" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Transaction Fee(KShs):"/>
+            android:layout_weight="2"
+            android:text="Transaction Fee(KShs):" />
+
         <EditText
             android:id="@+id/et_fee"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Recommended Balance(KShs):"/>
+            android:layout_weight="2"
+            android:text="Recommended Balance(KShs):" />
+
         <EditText
             android:id="@+id/et_balance"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:ems="10"/>
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="text" />
     </LinearLayout>
+
+    <!-- adMob View -->
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+    <!-- adUnitId: ca-app-pub-5565117060322780/5739621857 -->
 
 </LinearLayout>
