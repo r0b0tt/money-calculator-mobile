@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:text="Calculate Rates"
         android:background="@drawable/button"
         android:elevation="10dp"
@@ -89,21 +89,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
             android:text="Transaction Fee(KShs):"
+            android:layout_gravity="center"
             android:textColor="#f6f6f6"
             android:textSize="16sp" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/et_fee"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:layout_gravity="center"
             app:backgroundTint="#f6f6f6" />
     </LinearLayout>
 
@@ -111,23 +113,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_gravity="center"
             android:text="Recommended Balance(KShs):"
             android:textColor="#f6f6f6"
             android:textSize="16sp" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/et_balance"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
-            android:inputType="text"
+            android:layout_gravity="center"
+            android:inputType="numberDecimal"
             app:backgroundTint="#f6f6f6" />
     </LinearLayout>
 
