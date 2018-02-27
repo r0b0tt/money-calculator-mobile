@@ -48,8 +48,7 @@ public class Main extends AppCompatActivity {
                 // Todo: Reporting issues on Github
                 Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show();
             case R.id.menu_about:
-                Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
-                // Todo: Show About
+                startActivity(new Intent(Main.this, About.class));
                 return true;
             case R.id.menu_help:
                 Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();

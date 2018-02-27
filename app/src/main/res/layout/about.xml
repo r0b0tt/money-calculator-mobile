@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Todo: Add social media icons -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/logo"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Money Calculator"
+            android:textAlignment="center"
+            android:textColor="#f4f4f4"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="V1.0.0"
+            android:layout_marginBottom="24dp"
+            android:textAlignment="center"
+            android:textColor="#f4f4f4"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Designed and Developed by"
+            android:textAlignment="center"
+            android:textColor="#f4f4f4"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/about_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Antonio Maina"
+            android:textAlignment="center"
+            android:textColor="#f6f6f6"
+            android:clickable="true"
+            android:textSize="18sp"/>
+
+</LinearLayout>
