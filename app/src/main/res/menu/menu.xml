@@ -2,10 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_about"
-        android:title="About"
-        app:showAsAction="ifRoom"/>
-
+        android:id="@+id/menu_report"
+        android:icon="@drawable/exclamation"
+        android:title="Report Issue"/>
     <item android:id="@+id/menu_help"
+        android:icon="@drawable/question"
         android:title="Help" />
+    <item
+        android:id="@+id/menu_about"
+        android:icon="@drawable/info"
+        android:title="About"/>
+    <item
+        android:id="@+id/menu_feedbackRating"
+        android:icon="@drawable/star"
+        android:title="Rate and Feedback"/>
+
+    <item
+        android:id="@+id/menu_github"
+        android:icon="@drawable/githubimage"
+        android:title="View on Github"
+        app:showAsAction="ifRoom"/>
 </menu>

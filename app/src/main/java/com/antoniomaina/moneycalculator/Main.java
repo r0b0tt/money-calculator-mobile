@@ -1,12 +1,19 @@
 package com.antoniomaina.moneycalculator;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -37,12 +44,27 @@ public class Main extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_report:
+                // Todo: Reporting issues on Github
+                Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show();
             case R.id.menu_about:
                 Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+                // Todo: Show About
                 return true;
             case R.id.menu_help:
                 Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
+                // Todo: Show Help
                 return true;
+            case R.id.menu_feedbackRating:
+                Toast.makeText(this, "Rating and Feedback", Toast.LENGTH_SHORT).show();
+                // Todo: PlayStore Rating and Feedback
+                return true;
+            case R.id.menu_github:
+                // Todo: Add Github Link
+                String link = "http://www.antoniomaina.com";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                startActivity(intent);
+
             default:
                 return super.onOptionsItemSelected(item);
         }
