@@ -104,7 +104,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
+            android:textColor="#f4f4f4"
+            android:textAlignment="center"
+            android:enabled="false"
             android:layout_gravity="center"
             app:backgroundTint="#f6f6f6" />
     </LinearLayout>
@@ -128,8 +130,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textAlignment="center"
+            android:textColor="#f4f4f4"
             android:layout_gravity="center"
-            android:inputType="numberDecimal"
+            android:enabled="false"
             app:backgroundTint="#f6f6f6" />
     </LinearLayout>
 

@@ -5,9 +5,6 @@
         android:id="@+id/menu_report"
         android:icon="@drawable/exclamation"
         android:title="Report Issue"/>
-    <item android:id="@+id/menu_help"
-        android:icon="@drawable/question"
-        android:title="Help" />
     <item
         android:id="@+id/menu_about"
         android:icon="@drawable/info"
@@ -19,7 +16,7 @@
 
     <item
         android:id="@+id/menu_github"
-        android:icon="@drawable/githubimage"
+        android:icon="@drawable/github"
         android:title="View on Github"
         app:showAsAction="ifRoom"/>
 </menu>

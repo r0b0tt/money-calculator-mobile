@@ -1,6 +1,7 @@
 package com.antoniomaina.moneycalculator;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -50,10 +52,6 @@ public class Main extends AppCompatActivity {
             case R.id.menu_about:
                 startActivity(new Intent(Main.this, About.class));
                 return true;
-            case R.id.menu_help:
-                Toast.makeText(this, "Help", Toast.LENGTH_SHORT).show();
-                // Todo: Show Help
-                return true;
             case R.id.menu_feedbackRating:
                 Toast.makeText(this, "Rating and Feedback", Toast.LENGTH_SHORT).show();
                 // Todo: PlayStore Rating and Feedback
@@ -82,6 +80,7 @@ public class Main extends AppCompatActivity {
         sp_services.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                 if (parent.getItemAtPosition(position).toString().equals("M-Pesa")) {
                     sp_transactions = findViewById(R.id.sp_transactions);
                     ArrayAdapter<CharSequence> transactions_adapter = ArrayAdapter.createFromResource(Main.this, R.array.mpesa_transactions, android.R.layout.simple_spinner_item);
@@ -98,6 +97,17 @@ public class Main extends AppCompatActivity {
                     transactions_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     sp_transactions.setAdapter(transactions_adapter);
                 }
+                sp_transactions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
 
             @Override
