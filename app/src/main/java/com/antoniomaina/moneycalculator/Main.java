@@ -51,6 +51,7 @@ public class Main extends AppCompatActivity {
                 String issuesLink = "https://github.com/r0b0tt/money-calculator-mobile/issues";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(issuesLink));
                 startActivity(intent);
+                return true;
             case R.id.menu_about:
                 startActivity(new Intent(Main.this, About.class));
                 return true;

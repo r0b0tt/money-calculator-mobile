@@ -2,5 +2,5 @@
 **Description**
 Android application to calculate Mobile money tariffs in Kenya.
 
-**Note**
-Still under development.
+**Play Store Link**
+[View on Play Store](https://play.google.com/store/apps/details?id=com.antoniomaina.moneycalculator)
