@@ -1,5 +1,6 @@
 package com.antoniomaina.moneycalculator;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -47,20 +48,31 @@ public class Main extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_report:
-                // Todo: Reporting issues on Github
-                Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show();
+                String issuesLink = "https://github.com/r0b0tt/money-calculator-mobile/issues";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(issuesLink));
+                startActivity(intent);
             case R.id.menu_about:
                 startActivity(new Intent(Main.this, About.class));
                 return true;
             case R.id.menu_feedbackRating:
-                Toast.makeText(this, "Rating and Feedback", Toast.LENGTH_SHORT).show();
-                // Todo: PlayStore Rating and Feedback
+                Uri uri = Uri.parse("market://details?id=" + this.getPackageName());
+                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                // To count with Play market backstack, After pressing back button,
+                // to taken back to our application, we need to add following flags to intent.
+                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                try {
+                    startActivity(goToMarket);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
+                }
                 return true;
             case R.id.menu_github:
-                // Todo: Add Github Link
-                String link = "http://www.antoniomaina.com";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-                startActivity(intent);
+                String githubLink = "https://github.com/r0b0tt/money-calculator-mobile";
+                Intent gitIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(githubLink));
+                startActivity(gitIntent);
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -80,7 +92,6 @@ public class Main extends AppCompatActivity {
         sp_services.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                 if (parent.getItemAtPosition(position).toString().equals("M-Pesa")) {
                     sp_transactions = findViewById(R.id.sp_transactions);
                     ArrayAdapter<CharSequence> transactions_adapter = ArrayAdapter.createFromResource(Main.this, R.array.mpesa_transactions, android.R.layout.simple_spinner_item);
@@ -97,17 +108,6 @@ public class Main extends AppCompatActivity {
                     transactions_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     sp_transactions.setAdapter(transactions_adapter);
                 }
-                sp_transactions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
             }
 
             @Override
