@@ -2,7 +2,6 @@ package com.antoniomaina.moneycalculator;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +32,14 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        // adMob Initialization
+        MobileAds.initialize(this, "ca-app-pub-5565117060322780~3555052469");
+
+        // Load Ads
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         initialize();
     }
@@ -103,9 +110,14 @@ public class Main extends AppCompatActivity {
                     ArrayAdapter<CharSequence> transactions_adapter = ArrayAdapter.createFromResource(Main.this, R.array.airtel_transactions, android.R.layout.simple_spinner_item);
                     transactions_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     sp_transactions.setAdapter(transactions_adapter);
-                } else {
+                } else if (parent.getItemAtPosition(position).toString().equals("Eazzy Pay")) {
                     sp_transactions = findViewById(R.id.sp_transactions);
                     ArrayAdapter<CharSequence> transactions_adapter = ArrayAdapter.createFromResource(Main.this, R.array.eazzy_transactions, android.R.layout.simple_spinner_item);
+                    transactions_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    sp_transactions.setAdapter(transactions_adapter);
+                } else {
+                    sp_transactions.findViewById(R.id.sp_transactions);
+                    ArrayAdapter<CharSequence> transactions_adapter = ArrayAdapter.createFromResource(Main.this, R.array.tkash_transactions, android.R.layout.simple_spinner_item);
                     transactions_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     sp_transactions.setAdapter(transactions_adapter);
                 }
@@ -113,7 +125,7 @@ public class Main extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(Main.this, "Please select a service", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main.this, "Please select a service!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -125,15 +137,6 @@ public class Main extends AppCompatActivity {
                 calculateRates();
             }
         });
-
-        // adMob Initialization
-        MobileAds.initialize(this, "ca-app-pub-5565117060322780~3555052469");
-
-        // Load Ads
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
     }
 
     private void calculateRates() {
@@ -157,8 +160,57 @@ public class Main extends AppCompatActivity {
 
                 case "Eazzy Pay":
                     handleEazzyPay(Double.valueOf(amount));
+                    break;
+
+                case "T-kash":
+                    handleTkash(Double.valueOf(amount));
             }
         }
+
+    }
+
+    private void handleTkash(Double amount) {
+        /**
+         * This function gets the rates for various transactions using T-Kash.
+         */
+        String selected_transaction = sp_transactions.getSelectedItem().toString();
+        Double fee = 0.00;
+        KenyaTariffs kenyaTariffs = new KenyaTariffs();
+
+        switch (selected_transaction) {
+            case "Transfer to Registered Customers":
+                if (kenyaTariffs.getTKashTransferToRegisteredCustomersMinMax(amount))
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 1.00 and KShs. 70,000.00 respectively.", Toast.LENGTH_SHORT).show();
+                else
+                    fee = kenyaTariffs.getTkashTransferToRegisteredCustomersRates(amount);
+                break;
+            case "Agent Withdrawal":
+                if (kenyaTariffs.getTkashAgentWIthdrawalMinMax(amount))
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 50.00 and KShs. 70,000.00 respectively.", Toast.LENGTH_SHORT).show();
+                else
+                    fee = kenyaTariffs.getTkashAgentWithdrawalRates(amount);
+                break;
+            case "Transfer to Unregistered Customers":
+                if (kenyaTariffs.getTkashTransferToUnregisteredCustomersMinMax(amount))
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 100.00 and KShs. 35,000.00 respectively.", Toast.LENGTH_SHORT).show();
+                else
+                    fee = kenyaTariffs.getTkashTransferToUnregisteredCustomersRates(amount);
+                break;
+            case "ATM Withdrawal":
+                if (kenyaTariffs.getTkashAtmWithdrawalMinMax(amount))
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 200.00 and KShs. 20,000.00 respectively.", Toast.LENGTH_SHORT).show();
+                else
+                    fee = kenyaTariffs.getTkashAtmWithdrawalRates(amount);
+                break;
+            case "Bulk Disbursement":
+                if (kenyaTariffs.getTkashBulkDisbursmentMinMax(amount))
+                    Toast.makeText(this, "Minimum and Maximum amounts are KShs. 50.00 and KShs. 70,000.00 respectively.", Toast.LENGTH_SHORT).show();
+                else
+                    fee = kenyaTariffs.getTkashBulkDisbursmentRates(amount);
+                break;
+        }
+        et_fee.setText(String.format("%.2f", fee));
+        et_balance.setText(String.format("%.2f", amount + fee));
 
     }
 

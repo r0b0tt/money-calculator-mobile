@@ -267,5 +267,122 @@ public final class KenyaTariffs {
             return 193.00;
     }
 
+    /*
+    T-kash
+     */
+    public Boolean getTkashAgentWIthdrawalMinMax(Double amount) {
+        return (amount < 50.00 || amount > 70000.00);
+    }
+
+    public Double getTkashAgentWithdrawalRates(Double amount) {
+        if (amount <= 100.00)
+            return 10.00;
+        else if (amount <= 2500.00)
+            return 25.00;
+        else if (amount <= 3500.00)
+            return 45.00;
+        else if (amount <= 5000.00)
+            return 60.00;
+        else if (amount <= 7500.00)
+            return 75.00;
+        else if (amount <= 10000.00)
+            return 100.00;
+        else if (amount <= 15000.00)
+            return 150.00;
+        else if (amount <= 20000.00)
+            return 160.00;
+        else if (amount <= 35000.00)
+            return 170.00;
+        else if (amount <= 50000.00)
+            return 250.00;
+        else
+            return 300.00;
+
+    }
+
+    public Boolean getTKashTransferToRegisteredCustomersMinMax(Double amount) {
+        return (amount < 1.00 || amount > 70000.00);
+    }
+
+    public Double getTkashTransferToRegisteredCustomersRates(Double amount) {
+        if (amount <= 200.00)
+            return 0.00;
+        else if (amount <= 500.00)
+            return 10.00;
+        else if (amount <= 1000)
+            return 15.00;
+        else if (amount <= 1500.00)
+            return 20.00;
+        else if (amount <= 2500.00)
+            return 30.00;
+        else if (amount <= 3500.00)
+            return 40.00;
+        else if (amount <= 5000.00)
+            return 50.00;
+        else if (amount <= 7500.00)
+            return 60.00;
+        else if (amount <= 20000.00)
+            return 80.00;
+        else {
+            return 100.00;
+        }
+    }
+
+    public Boolean getTkashTransferToUnregisteredCustomersMinMax(Double amount) {
+        return (amount <= 100 || amount > 35000);
+    }
+
+    public Double getTkashTransferToUnregisteredCustomersRates(Double amount) {
+        if (amount <= 500.00)
+            return 35.00;
+        else if (amount <= 1000.00)
+            return 40.00;
+        else if (amount <= 1500.00)
+            return 45.00;
+        else if (amount <= 2500.00)
+            return 55.00;
+        else if (amount <= 3500.00)
+            return 85.00;
+        else if (amount <= 5000.00)
+            return 110.00;
+        else if (amount <= 7500.00)
+            return 135.00;
+        else if (amount <= 10000.00)
+            return 180.00;
+        else if (amount <= 15000.00)
+            return 230.00;
+        else if (amount <= 20000.00)
+            return 240.00;
+        else
+            return 270.00;
+    }
+
+    public Boolean getTkashAtmWithdrawalMinMax(Double amount) {
+        return (amount < 200 || amount > 20000);
+    }
+
+    public Double getTkashAtmWithdrawalRates(Double amount) {
+        if (amount <= 2500.00)
+            return 33.00;
+        else if (amount <= 5000.00)
+            return 60.00;
+        else if (amount <= 10000.00)
+            return 100.00;
+        else
+            return 175.00;
+    }
+
+    public Boolean getTkashBulkDisbursmentMinMax(Double amount) {
+        return (amount < 50 || amount > 70000);
+    }
+
+    public Double getTkashBulkDisbursmentRates(Double amount) {
+        if (amount <= 1000.00)
+            return 15.00;
+        else if(amount <= 1500.00)
+            return 25.00;
+        else
+            return 30.00;
+    }
 
 }

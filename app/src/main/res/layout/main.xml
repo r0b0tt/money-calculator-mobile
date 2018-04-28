@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical"
-    android:padding="16px"
+    android:padding="16dp"
     android:theme="@style/MoneyCalculator"
     tools:context="com.antoniomaina.moneycalculator.Main">
 
@@ -140,16 +140,21 @@
     <!-- adMob View -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
 
-        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+            ads:adUnitId="@string/test_unit_id">
+        </com.google.android.gms.ads.AdView>
     </RelativeLayout>
+    <!-- adUnitId: ca-app-pub-5565117060322780/5739621857 -->
+    <!-- TEST: ca-app-pub-3940256099942544/6300978111 -->
 
 </LinearLayout>

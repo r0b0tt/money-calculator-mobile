@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">Money Calculator</string>
 
+    <string name="test_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="live_unit_id">ca-app-pub-5565117060322780/5739621857</string>
+
     <string-array name="services_array">
         <item>M-Pesa</item>
         <item>Airtel Money</item>
         <item>Eazzy Pay</item>
+        <item>T-kash</item>
     </string-array>
 
     <string-array name="mpesa_transactions">
@@ -31,5 +35,13 @@
         <item>Send to other Bank Account(PESA-LINK)</item>
         <item>Send to other Bank Account(RTGS)</item>
         <item>Bill Payments</item>
+    </string-array>
+
+    <string-array name="tkash_transactions">
+        <item>Transfer to Registered Customers</item>
+        <item>Agent Withdrawal</item>
+        <item>Transfer to Unregistered Customers</item>
+        <item>ATM Withdrawal</item>
+        <item>Bulk Disbursement</item>
     </string-array>
 </resources>
