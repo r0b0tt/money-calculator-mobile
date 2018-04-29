@@ -1,4 +1,4 @@
-package com.antoniomaina.moneycalculator;
+package com.antoniomaina.moneycalculatorkenya;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;

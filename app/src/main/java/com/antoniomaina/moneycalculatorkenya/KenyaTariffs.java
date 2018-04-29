@@ -1,4 +1,4 @@
-package com.antoniomaina.moneycalculator;
+package com.antoniomaina.moneycalculatorkenya;
 
 /**
  * Created by r0b0t on 2/19/18.

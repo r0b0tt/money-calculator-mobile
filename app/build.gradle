@@ -1,19 +1,28 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'MoneyCalculatorKey'
+            keyPassword 'moneycalculator1715'
+            storeFile file('/mnt/8EA21F02A21EEE89/_0/Mobile Development/Android/_projects/_workingFiles/MoneyCalculator/moneycalculator.jks')
+            storePassword 'moneycalculator1715'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.antoniomaina.moneycalculator"
+        applicationId "com.antoniomaina.moneycalculatorkenya"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName '1.0.0'
+        versionCode 3
+        versionName '1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     productFlavors {

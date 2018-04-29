@@ -1,4 +1,4 @@
-package com.antoniomaina.moneycalculator;
+package com.antoniomaina.moneycalculatorkenya;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

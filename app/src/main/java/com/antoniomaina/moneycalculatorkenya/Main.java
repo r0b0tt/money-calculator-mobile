@@ -1,4 +1,4 @@
-package com.antoniomaina.moneycalculator;
+package com.antoniomaina.moneycalculatorkenya;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -34,7 +33,7 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.main);
 
         // adMob Initialization
-        MobileAds.initialize(this, "ca-app-pub-5565117060322780~3555052469");
+        MobileAds.initialize(this, "ca-app-pub-5565117060322780~4641873935");
 
         // Load Ads
         mAdView = findViewById(R.id.adView);

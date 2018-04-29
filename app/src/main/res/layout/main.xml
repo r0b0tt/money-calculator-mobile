@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:theme="@style/MoneyCalculator"
-    tools:context="com.antoniomaina.moneycalculator.Main">
+    tools:context="com.antoniomaina.moneycalculatorkenya.Main">
 
     <android.support.v7.widget.AppCompatEditText
         app:backgroundTint="#f6f6f6"
@@ -151,10 +151,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="@string/test_unit_id">
+            ads:adUnitId="@string/live_unit_id">
         </com.google.android.gms.ads.AdView>
     </RelativeLayout>
-    <!-- adUnitId: ca-app-pub-5565117060322780/5739621857 -->
-    <!-- TEST: ca-app-pub-3940256099942544/6300978111 -->
 
 </LinearLayout>

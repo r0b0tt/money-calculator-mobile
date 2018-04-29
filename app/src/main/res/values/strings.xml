@@ -2,7 +2,7 @@
     <string name="app_name">Money Calculator</string>
 
     <string name="test_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="live_unit_id">ca-app-pub-5565117060322780/5739621857</string>
+    <string name="live_unit_id">ca-app-pub-5565117060322780/6279470802</string>
 
     <string-array name="services_array">
         <item>M-Pesa</item>
